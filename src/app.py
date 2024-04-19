@@ -120,7 +120,6 @@ class App(ct.CTk):
                 self.msgbox_not_found_error()
             else:
                 self.pop_up(email=email, password=password)
-                # pyperclip.copy(password)
                 self.del_entries()
 
     def del_password(self):
@@ -193,7 +192,7 @@ class App(ct.CTk):
 
 
 def change_appearance(new_appearance_mode):
-    # the theme doesn't change the background of the canvas, have to change it manually.
+    # change background of the canvas according to the theme
     ct.set_appearance_mode(new_appearance_mode)
     if new_appearance_mode == "Light":
         app.canvas.configure(background="#d1d5d8")
