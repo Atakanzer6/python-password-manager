@@ -120,7 +120,7 @@ class App(ct.CTk):
                 self.msgbox_not_found_error()
             else:
                 self.pop_up(email=email, password=password)
-                pyperclip.copy(password)
+                # pyperclip.copy(password)
                 self.del_entries()
 
     def del_password(self):
@@ -161,23 +161,27 @@ class App(ct.CTk):
 
     def pop_up(self, email, password):
         popup_width = 300
-        popup_height = 150
+        popup_height = 200
 
         popup = ct.CTkToplevel(master=self.frame_right)
         popup.geometry(f"{popup_width}x{popup_height}")
         popup.minsize(popup_width, popup_height)
         popup.maxsize(popup_width, popup_height)
         popup.configure(pady=10, padx=10)
-        popup.iconbitmap("lock.ico")
+        popup.iconbitmap("../img/lock.ico")
 
         popup.title("MyPass")
-        label = ct.CTkLabel(master=popup, text=f"Email: {email}\nPassword: {password}")
+        label = ct.CTkLabel(master=popup, text=f"Email: {email}\nPassword: ******")
         label.configure(pady=10, padx=10)
         label.pack()
 
-        button = ct.CTkButton(master=popup, text="exit", command=popup.destroy)
-        button.configure(pady=10, padx=10)
-        button.pack()
+        copy_btn = ct.CTkButton(master=popup, text="copy", command=pyperclip.copy(password))
+        copy_btn.configure(pady=10, padx=10)
+        copy_btn.pack()
+
+        exit_btn = ct.CTkButton(master=popup, text="exit", command=popup.destroy)
+        exit_btn.configure(pady=10, padx=10)
+        exit_btn.pack()
 
     @staticmethod
     def msgbox_blank_error():
