@@ -159,6 +159,9 @@ class App(ct.CTk):
         self.password_entry.delete(0, "end")
 
     def pop_up(self, email, password):
+        def copy_password():
+            pyperclip.copy(password)
+
         popup_width = 300
         popup_height = 200
 
@@ -174,7 +177,7 @@ class App(ct.CTk):
         label.configure(pady=10, padx=10)
         label.pack()
 
-        copy_btn = ct.CTkButton(master=popup, text="copy", command=pyperclip.copy(password))
+        copy_btn = ct.CTkButton(master=popup, text="copy", command=copy_password)
         copy_btn.configure(pady=10, padx=10)
         copy_btn.pack()
 
